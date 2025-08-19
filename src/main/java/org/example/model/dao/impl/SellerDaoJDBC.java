@@ -69,7 +69,7 @@ public class SellerDaoJDBC implements SellerDao {
                 throw new RuntimeException("Erro ao atualizar vendedor: " + seller);
             }
         }catch (SQLException e) {
-            throw new RuntimeException("Erro ao atualizar vendedor: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao atualizar vendedor: " + e.getMessage());
         }
     }
 
@@ -110,15 +110,14 @@ public class SellerDaoJDBC implements SellerDao {
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
                     Department dep = instantiateDepartment(rs);
-                    Seller seller = instantiateSeller(rs, dep);
 
-                    return seller;
+                    return instantiateSeller(rs, dep);
                 }
                 return null;
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar vendedor por ID: " + e.getMessage(), e);
+            throw new RuntimeException("Erro ao buscar vendedor por ID: " + e.getMessage());
         }
     }
 
