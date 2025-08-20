@@ -43,7 +43,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
             throw new IllegalArgumentException("id do department não pode ser nulo");
         }
 
-        String sql = "UPDATE department" + "SET Name=?" + "WHERE Id=?";
+        String sql = "UPDATE department SET Name = ? WHERE Id = ?";
 
         try(PreparedStatement st = connection.prepareStatement(sql)){
 
@@ -122,8 +122,8 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     private Department instantiateDepartment(ResultSet rs) throws SQLException {
         Department dep = new Department();
-        dep.setId(rs.getInt("DepartmentId"));
-        dep.setName(rs.getString("DepName"));
+        dep.setId(rs.getInt("Id"));
+        dep.setName(rs.getString("Name"));
         return dep;
     }
 }

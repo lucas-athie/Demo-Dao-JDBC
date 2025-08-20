@@ -4,11 +4,7 @@ import org.example.model.dao.SellerDao;
 import org.example.model.entities.Department;
 import org.example.model.entities.Seller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +49,7 @@ public class SellerDaoJDBC implements SellerDao {
             throw new IllegalArgumentException("Department e DepartmentId não podem ser nulos");
         }
         String sql = "UPDATE seller " +
-                "SET Name = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? " +
+                "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? " +
                 "WHERE Id = ?";
 
         try(PreparedStatement st = connection.prepareStatement(sql)){
